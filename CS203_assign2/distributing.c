@@ -15,6 +15,15 @@ int main()
     {
       printf("%d iterations have finished.\n",i);
     }
+    if(i%1000==0)//Backup every 1000 iterations 
+    {
+      FILE* dist_data=fopen("Distributed_Data.txt","w");
+      for(int i=0;i<NUM_SERVERS;i++)
+      {
+        fprintf(dist_data,"%d\n",*(dist_count+i));
+      }
+      fclose(dist_data);
+    }
     int max_job=0;
     int* server_job_count=(int*)calloc(NUM_SERVERS,sizeof(int));
     //for each client assign its job randomly to any server
@@ -33,12 +42,6 @@ int main()
     free(server_job_count);
     *(dist_count+max_job-1)=*(dist_count+max_job-1)+1;
   }
-  FILE* dist_data=fopen("Distributed_Data.txt","w");
-  for(int i=0;i<NUM_SERVERS;i++)
-  {
-    fprintf(dist_data,"%d\n",*(dist_count+i));
-  }
-  fclose(dist_data);
   free(dist_count);
   return 0;
 }

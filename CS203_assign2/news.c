@@ -16,6 +16,16 @@ int main()
     {
       printf("%d iterations have finished.\n",i);
     }
+    if(i%1000==0)
+    {
+      FILE* day_data=fopen("News_Data.txt","w");
+      for(int i=0;i<10*NUM_PEOPLE;i++)
+      {
+        fprintf(day_data,"%d\n",*(day_count+i));
+      }
+      fprintf(day_data,"%d days exceed 10 times the number of people\n",num_exceed);
+      fclose(day_data);
+    }
     int* known_people=(int*)calloc(NUM_PEOPLE,sizeof(int));
     *known_people=1;
     int num_known=1;
@@ -53,13 +63,6 @@ int main()
     }
     free(known_people);
   }
-  FILE* day_data=fopen("News_Data.txt","w");
-  for(int i=0;i<10*NUM_PEOPLE;i++)
-  {
-    fprintf(day_data,"%d\n",*(day_count+i));
-  }
-  fprintf(day_data,"%d days exceed 10 times the number of people\n",num_exceed);
-  fclose(day_data);
   free(day_count);
   return 0;
 }
