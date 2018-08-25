@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#define MAX_ITERATIONS 1000
+#define MAX_ITERATIONS 150000
 #define NUM_PEOPLE 1000000
 
 int main()

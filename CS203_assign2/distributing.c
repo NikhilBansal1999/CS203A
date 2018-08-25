@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#define MAX_ITERATIONS 1000
+#define MAX_ITERATIONS 200000
 #define NUM_SERVERS 10000000
 
 int main()
@@ -15,7 +15,7 @@ int main()
     {
       printf("%d iterations have finished.\n",i);
     }
-    if(i%1000==0)//Backup every 1000 iterations 
+    if(i%1000==0)//Backup every 1000 iterations
     {
       FILE* dist_data=fopen("Distributed_Data.txt","w");
       for(int i=0;i<NUM_SERVERS;i++)
