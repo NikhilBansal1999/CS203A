@@ -6,8 +6,9 @@
 
 int main()
 {
-  //Z can be a maximum of NUM_SERVERS , beginning from 1
-  int* dist_count=(int*)calloc(NUM_SERVERS,sizeof(int));
+  //Z can be a maximum of NUM_SERVERS , beginning from 1,however very high values of Z practically never appears
+  int* dist_count=(int*)calloc(NUM_SERVERS/100,sizeof(int));
+  int num_exceed=0;
   for(int i=0;i<MAX_ITERATIONS;i++)
   {
     srandom(i);
@@ -22,6 +23,7 @@ int main()
       {
         fprintf(dist_data,"%d\n",*(dist_count+i));
       }
+      fprintf(day_data,"%d times the max job was greater than 1/100 the number of servers\n",num_exceed);
       fclose(dist_data);
     }
     int max_job=0;
@@ -40,7 +42,14 @@ int main()
     }
     //we have the maximum number of job any client has
     free(server_job_count);
-    *(dist_count+max_job-1)=*(dist_count+max_job-1)+1;
+    if(max_job<NUM_SERVERS/100)
+    {
+      *(dist_count+max_job-1)=*(dist_count+max_job-1)+1;
+    }
+    else
+    {
+      num_exceed=num_exceed+1;
+    }
   }
   free(dist_count);
   return 0;

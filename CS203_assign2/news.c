@@ -7,7 +7,7 @@
 int main()
 {
   //Probability of X being greater than 10*NUM_PEOPLE is very small
-  int* day_count=(int*)calloc(10*NUM_PEOPLE,sizeof(int));
+  int* day_count=(int*)calloc(NUM_PEOPLE/10,sizeof(int));
   int num_exceed=0;
   for(int i=0;i<MAX_ITERATIONS;i++)
   {
@@ -23,7 +23,7 @@ int main()
       {
         fprintf(day_data,"%d\n",*(day_count+i));
       }
-      fprintf(day_data,"%d days exceed 10 times the number of people\n",num_exceed);
+      fprintf(day_data,"%d days exceed 1/10 times the number of people\n",num_exceed);
       fclose(day_data);
     }
     int* known_people=(int*)calloc(NUM_PEOPLE,sizeof(int));
@@ -53,7 +53,7 @@ int main()
       free(set_in_this_iter);
       days=days+1;
     }
-    if(days>=(10*NUM_PEOPLE))
+    if(days>=(NUM_PEOPLE/10))
     {
       num_exceed=num_exceed+1;
     }
