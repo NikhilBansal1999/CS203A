@@ -19,11 +19,11 @@ int main()
     if(i%1000==0)//Backup every 1000 iterations
     {
       FILE* dist_data=fopen("Distributed_Data.txt","w");
-      for(int i=0;i<NUM_SERVERS;i++)
+      for(int i=0;i<NUM_SERVERS/100;i++)
       {
         fprintf(dist_data,"%d\n",*(dist_count+i));
       }
-      fprintf(day_data,"%d times the max job was greater than 1/100 the number of servers\n",num_exceed);
+      fprintf(dist_data,"%d times the max job was greater than 1/100 the number of servers\n",num_exceed);
       fclose(dist_data);
     }
     int max_job=0;

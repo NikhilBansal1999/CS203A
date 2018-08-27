@@ -19,7 +19,7 @@ int main()
     if(i%1000==0)
     {
       FILE* day_data=fopen("News_Data.txt","w");
-      for(int i=0;i<10*NUM_PEOPLE;i++)
+      for(int i=0;i<NUM_PEOPLE/10;i++)
       {
         fprintf(day_data,"%d\n",*(day_count+i));
       }
